@@ -17,17 +17,14 @@ This website is like a giant birthday card for Caydence! You can:
 
 ## How to Use It
 1. **Open the Website**: Ask a grown-up to visit the website on a phone or computer. It’s like opening a present!
-2. **Look at the Top**: You’ll see “Happy 11th Birthday, Caydence!” pop up like magic. That’s the first surprise!
-3. **Click Fun Buttons**: There are two buttons that bounce like they’re dancing:
-   - **“Leave a Birthday Wish!”**: Click this to write something nice for Caydence.
+ **“Leave a Birthday Wish!”**: Click this to write something nice for Caydence.
    - **“Discover a Chappell Roan Fact”**: Click to learn something cool about her favorite singer!
-4. **Write a Message**:
+2. **Write a Message**:
    - Scroll to the “Birthday Message Board.”
-   - Type your name (like “Zoe” or “Max”).
    - Write a message, like “Happy birthday, Caydence! Your bracelets rock!”
    - Hit “Post Message,” and watch your message slide in from the side—wooosh!
    - Every time you post, a special file saves your message so Caydence can read it later.
-5. **Explore More**:
+3. **Explore More**:
    - **Songs**: See popular songs from 2014, like “Happy,” that were big when Caydence was a baby.
    - **Bracelets**: Follow steps to make a colorful bead bracelet, just like Caydence loves.
 6. **Have a Blast**: The website is all pink and sparkly, like a Chappell Roan concert!
@@ -45,11 +42,11 @@ This website is like a giant birthday card for Caydence! You can:
 Tell a grown-up to open the website. It’s waiting for you at a special address (like a secret clubhouse)! If they need help, say it’s on “GitHub Pages,” but you don’t need to worry about that.
 
 ## Who Made It?
-This website was made with lots of love for Caydence by her Mom's longtime friend Robert aka "Roberto" who has known Caydence's mom since before she was even born! Yes, some people were actually born in the previous century lol. We wanted Caydence's 11th birthday to be as wild and colorful as her bracelets
+This website was made with lots of love for Caydence by her Mom's longtime friend Robert aka "Roberto" who has known Caydence's mom since before she was even born! Yes, some people were actually born in the previous century lol. We wanted Caydence's 11th birthday to be as wild and colorful as her personality! ;-)
 
 ## If It Acts Silly
 If the website doesn’t work right (like if messages don’t slide), tell a grown-up to check the internet or refresh the page. It’s all good—parties are about fun, not worries!
 
 Let’s make Caydence’s birthday the best ever! 🥳
 
-nerdy stuff: this site was designed by utilizing xAI's Grok 3 to generate html, styles.css & script.js bc the author loves python and is kind of implementing 
+nerdy stuff: html, css & js were used to create this website just for Caydence. 
