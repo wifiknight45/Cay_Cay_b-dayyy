@@ -16,6 +16,20 @@ function showChappellFact() {
     alert(randomFact);
 }
 
+// Export messages to a text file
+function exportMessagesToTextFile(messages) {
+    const textContent = messages.map(({ name, message }) => `${name}: ${message}`).join('\n\n');
+    const blob = new Blob([textContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'caydence_birthday_messages.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
 // Handle message form submission
 const messageForm = document.getElementById('message-form');
 const messageBoard = document.getElementById('message-board');
@@ -34,6 +48,10 @@ messageForm.addEventListener('submit', function(event) {
         
         // Save message to localStorage
         saveMessage(name, message);
+        
+        // Export all messages to a text file
+        const messages = JSON.parse(localStorage.getItem('birthdayMessages')) || [];
+        exportMessagesToTextFile(messages);
         
         // Clear form
         messageForm.reset();
