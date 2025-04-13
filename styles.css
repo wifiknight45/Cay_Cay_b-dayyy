@@ -2,10 +2,22 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #f0f8ff;
+    margin: 0;
+    padding: 20px;
 }
 
 h1, h2 {
     color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    font-size: 18px;
+    margin: 10px 0;
 }
 
 button {
@@ -20,6 +32,36 @@ button {
 }
 
 button:hover {
+    background-color: #ff1493;
+}
+
+canvas {
+    border: 2px solid #333;
+    background-color: white;
+    margin-top: 20px;
+}
+
+.consent-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: none;
+    text-align: center;
+}
+
+.consent-banner a {
+    color: #ff69b4;
+}
+
+.consent-banner button {
+    background-color: #ff69b4;
+    margin: 0 10px;
+}
+
+.consent-banner button:hover {
     background-color: #ff1493;
 }
 
