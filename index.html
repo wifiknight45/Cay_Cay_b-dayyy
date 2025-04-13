@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caydence's 11th Birthday</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha384-NmQ6bX2d3Tt2hZP4B8WZx9H4q7iZlaFqvTVA/4QZ3E5Q2i4p8GrH5Sz7xJ0fwJ6B" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,8 +15,10 @@
 
     <div id="passwordPrompt" class="password-prompt">
         <p>Enter the party password to join Caydence's birthday fun!</p>
-        <input type="password" id="passwordInput">
-        <button onclick="checkPassword()">Enter</button>
+        <label for="passwordInput">Password:</label>
+        <input type="password" id="passwordInput" name="password">
+        <button id="passwordButton">Enter</button>
+        <p id="passwordError" style="color: red; display: none;">Incorrect password. Please try again.</p>
     </div>
 
     <div id="mainContent" style="display: none;">
@@ -37,20 +39,20 @@
 
         <h2>Create Your Own Art!</h2>
         <p>Make cool pictures based on the time of day!</p>
-        <button onclick="drawAbstract()">Create Abstract Art</button>
-        <button onclick="drawSun()">Create Sun Picture</button>
+        <button id="abstractArtButton">Create Abstract Art</button>
+        <button id="sunArtButton">Create Sun Picture</button>
         <canvas id="artCanvas" width="500" height="400"></canvas>
 
         <h2>Leave a Birthday Message!</h2>
         <p>Write a fun message for Caydence!</p>
-        <input type="text" id="messageInput" placeholder="Your message...">
-        <button onclick="postMessage()">Send Message</button>
+        <input type="text" id="messageInput" name="message" placeholder="Your message...">
+        <button id="messageButton">Send Message</button>
         <div id="messageBoard"></div>
 
         <h2>Guess the Birthday Number Game!</h2>
         <p>Can you guess the secret number (1–100)? You get 10 tries!</p>
-        <input type="number" id="guessInput" placeholder="Enter a number" min="1" max="100">
-        <button onclick="makeGuess()">Guess!</button>
+        <input type="number" id="guessInput" name="guess" placeholder="Enter a number" min="1" max="100">
+        <button id="guessButton">Guess!</button>
         <p id="gameFeedback">Start guessing, superstar!</p>
         <p id="guessesLeft">Guesses left: 10</p>
 
