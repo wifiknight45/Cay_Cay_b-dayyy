@@ -41,7 +41,7 @@ canvas {
     margin-top: 20px;
 }
 
-.password-prompt {
+.password-prompt, #accessDenied {
     position: fixed;
     top: 0;
     left: 0;
@@ -64,6 +64,14 @@ canvas {
 
 .password-prompt button {
     background-color: #ff69b4;
+}
+
+#accessDenied h1 {
+    font-size: 36px;
+}
+
+#accessDenied p {
+    font-size: 18px;
 }
 
 #messageInput, #guessInput {
