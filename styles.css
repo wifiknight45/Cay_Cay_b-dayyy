@@ -41,32 +41,50 @@ canvas {
     margin-top: 20px;
 }
 
-.consent-banner {
+.password-prompt {
     position: fixed;
-    bottom: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: #333;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-prompt input {
     padding: 10px;
-    display: none;
-    text-align: center;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 5px;
 }
 
-.consent-banner a {
-    color: #ff69b4;
-}
-
-.consent-banner button {
+.password-prompt button {
     background-color: #ff69b4;
-    margin: 0 10px;
 }
 
-.consent-banner button:hover {
-    background-color: #ff1493;
+#messageInput {
+    padding: 10px;
+    width: 300px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 5px;
 }
 
-canvas {
-    border: 2px solid #333;
-    background-color: white;
+#messageBoard {
     margin-top: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.message {
+    background-color: #ffe4e1;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
 }
