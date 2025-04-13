@@ -31,8 +31,14 @@ button {
     border-radius: 5px;
 }
 
+/* Add focus styles for accessibility */
 button:hover {
     background-color: #ff1493;
+}
+
+button:focus {
+    outline: 2px solid #ff1493;
+    outline-offset: 2px;
 }
 
 canvas {
@@ -63,7 +69,7 @@ canvas {
 }
 
 .password-prompt button {
-    background-color: #ff69b4;
+    background-color: inherit; /* Inherit styles from global button */
 }
 
 #accessDenied h1 {
@@ -106,4 +112,20 @@ canvas {
 #guessesLeft {
     font-size: 16px;
     color: #ff69b4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    #messageInput, #guessInput {
+        width: 100%;
+    }
 }
