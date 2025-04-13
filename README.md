@@ -1,5 +1,7 @@
 # Caydence’s Awesome 11th Birthday Website! 🎉
+URL? look below btw,that's just a big word for Uniform Resource Locator or a website link
 
+------------->>> https://wifiknight45.github.io/Cay_Cay_b-dayyy/ <------------------------------
 ## Hello there friends and family!
 Welcome to Caydence’s birthday website! It’s a fun place to celebrate her turning 11 tomorrow, April 14, 2025. Today, April 13, we’re having a small party, and you’re invited to join the fun online! This site is full of cool stuff Caydence loves, like *Coraline*, Chappell Roan’s music, and making wild, colorful bead bracelets.
 
