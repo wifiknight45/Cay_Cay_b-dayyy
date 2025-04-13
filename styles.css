@@ -147,3 +147,21 @@ footer {
     h1 { font-size: 1.8em; }
     .buttons button { font-size: 0.9em; }
 }
+.achievements {
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.achievements ul {
+    list-style-position: inside;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.achievements li {
+    margin: 10px 0;
+}
