@@ -1,7 +1,9 @@
 # Caydence’s Awesome 11th Birthday Website! 🎉
-URL? look below btw,that's just a big word for Uniform Resource Locator or a website link
+
+URL? look below btw,that's just a big word for Uniform Resource Locator or a website link.
 
 ------------->>> https://wifiknight45.github.io/Cay_Cay_b-dayyy/ <------------------------------
+
 ## Hello there friends and family!
 Welcome to Caydence’s birthday website! It’s a fun place to celebrate her turning 11 tomorrow, April 14, 2025. Today, April 13, we’re having a small party, and you’re invited to join the fun online! This site is full of cool stuff Caydence loves, like *Coraline*, Chappell Roan’s music, and making wild, colorful bead bracelets.
 
@@ -49,3 +51,5 @@ This website was made with lots of love for Caydence by her Mom's longtime frien
 If the website doesn’t work right (like if messages don’t slide), tell a grown-up to check the internet or refresh the page. It’s all good—parties are about fun, not worries!
 
 Let’s make Caydence’s birthday the best ever! 🥳
+
+nerdy stuff: this site was designed by utilizing xAI's Grok 3 to generate html, styles.css & script.js bc the author loves python and is kind of implementing 
