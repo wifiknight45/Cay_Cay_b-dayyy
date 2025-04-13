@@ -1,3 +1,32 @@
+// IP Blocking
+async function checkIPAccess() {
+    try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        const city = (data.city || '').toLowerCase();
+        const region = (data.region_code || '').toUpperCase();
+
+        // Greater St. Louis cities (MO and IL)
+        const stLouisCities = [
+            'st. louis', 'saint louis', 'chesterfield', 'florissant', 'ballwin', 'fenton',
+            'o\'fallon', 'st. charles', 'st. peters', 'belleville', 'edwardsville',
+            'kirkwood', 'webster groves', 'maryland heights', 'hazelwood', 'arnold'
+        ];
+
+        // Block St. Louis area or Oklahoma
+        if (stLouisCities.includes(city) || region === 'OK') {
+            document.getElementById('accessDenied').style.display = 'flex';
+            document.getElementById('passwordPrompt').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'none';
+            return false;
+        }
+    } catch (e) {
+        console.log('IP check failed:', e);
+        // Allow access if API fails (avoid blocking legitimate users)
+    }
+    return true;
+}
+
 // Password Protection
 const passwordHash = 'f7b8c6d9e0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7'; // SHA-256 of 'C@y_CayTurn$11'
 
@@ -28,7 +57,8 @@ async function logVisitor() {
             ip: btoa(data.ip),
             country: data.country_name || 'unknown',
             city: data.city || 'unknown',
-            isp: data.org || 'unknown'
+            isp: data.org || 'unknown',
+            region: data.region_code || 'unknown'
         };
     } catch (e) {
         console.log('IP API failed:', e);
@@ -188,8 +218,9 @@ function makeGuess() {
 }
 
 // Initialize
-window.onload = () => {
-    if (localStorage.getItem('authenticated') === passwordHash) {
+window.onload = async () => {
+    const accessAllowed = await checkIPAccess();
+    if (accessAllowed && localStorage.getItem('authenticated') === passwordHash) {
         document.getElementById('passwordPrompt').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
         logVisitor();
