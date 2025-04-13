@@ -1,5 +1,5 @@
 // Password Protection
-const correctPassword = 'CayCay11'; // Change this to a strong, unique password
+const correctPassword = 'C@y_Cay11'; // Change this to a strong, unique password
 
 function checkPassword() {
     const input = document.getElementById('passwordInput').value;
