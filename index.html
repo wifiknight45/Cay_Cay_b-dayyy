@@ -3,33 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caydence's Birthday</title>
+    <title>Caydence's 11th Birthday</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="consentBanner" class="consent-banner">
-        <p>We use anonymous analytics to improve the site. No personal data is collected. <a href="#privacy">Learn more</a>.</p>
-        <button onclick="acceptConsent()">Accept</button>
-        <button onclick="declineConsent()">Decline</button>
+    <div id="passwordPrompt" class="password-prompt">
+        <p>Enter the party password to join Caydence's birthday fun!</p>
+        <input type="password" id="passwordInput">
+        <button onclick="checkPassword()">Enter</button>
     </div>
 
-    <h1>Happy Birthday, Caydence!</h1>
-    <h2>Songs that were popular when Caydence was born</h2>
-    <ul>
-        <li>Umbrella - Rihanna ft. Jay-Z</li>
-        <li>Hey There Delilah - Plain White T's</li>
-        <li>Beautiful Girls - Sean Kingston</li>
-    </ul>
+    <div id="mainContent" style="display: none;">
+        <h1>Happy Birthday, Caydence!</h1>
+        <h2>Songs that were popular when Caydence was born</h2>
+        <ul>
+            <li>Happy - Pharrell Williams</li>
+            <li>All of Me - John Legend</li>
+            <li>Dark Horse - Katy Perry</li>
+        </ul>
 
-    <h2>Create Your Own Art!</h2>
-    <p>Use the buttons below to create cool images based on the time of day!</p>
-    <button onclick="drawAbstract()">Create Abstract Art</button>
-    <button onclick="drawSun()">Create Sun Picture</button>
-    <canvas id="artCanvas" width="500" height="400"></canvas>
+        <h2>Create Your Own Art!</h2>
+        <p>Make cool pictures based on the time of day!</p>
+        <button onclick="drawAbstract()">Create Abstract Art</button>
+        <button onclick="drawSun()">Create Sun Picture</button>
+        <canvas id="artCanvas" width="500" height="400"></canvas>
 
-    <div id="privacy" style="margin-top: 20px;">
-        <h3>Privacy Notice</h3>
-        <p>We collect anonymous data (e.g., browser type, visit time) to understand site usage. No identifiable information is stored. Data is kept locally or sent to secure analytics with your consent.</p>
+        <h2>Leave a Birthday Message!</h2>
+        <p>Write a fun message for Caydence!</p>
+        <input type="text" id="messageInput" placeholder="Your message...">
+        <button onclick="postMessage()">Send Message</button>
+        <div id="messageBoard"></div>
     </div>
 
     <script src="script.js"></script>
