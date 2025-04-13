@@ -1,99 +1,68 @@
-// Scroll to messages section
-function scrollToMessages() {
-    document.getElementById('messages').scrollIntoView({ behavior: 'smooth' });
+const canvas = document.getElementById('artCanvas');
+const ctx = canvas.getContext('2d');
+
+function getTimeBasedValues() {
+    const now = new Date();
+    const hours = now.getHours() + now.getMinutes() / 60;
+    // Map time to 0–180 degrees (6 AM to 6 PM)
+    const sunAngle = ((hours - 6) % 12) / 12 * 180;
+    // Hue for colors (0–360)
+    const hue = (hours / 24) * 360;
+    return { sunAngle, hue, hours };
 }
 
-// Display a random Chappell Roan fact
-function showChappellFact() {
-    const facts = [
-        "Chappell Roan’s real name is Kayleigh, and she picked her stage name to honor her grandpa!",
-        "Her song ‘Good Luck, Babe!’ is a huge hit that kids like Caydence love dancing to!",
-        "Chappell loves sparkly outfits, just like the bead bracelets Caydence makes!",
-        "She grew up writing songs and even put them on YouTube when she was a teenager!",
-        "Chappell’s music is super fun, with bright colors and big feelings, perfect for a party!"
-    ];
-    const randomFact = facts[Math.floor(Math.random() * facts.length)];
-    alert(randomFact);
-}
+function drawAbstract() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const { hue } = getTimeBasedValues();
 
-// Fetch IP address using ipapi.co
-async function getIPAddress() {
-    try {
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-        return data.ip || 'Unknown IP';
-    } catch (error) {
-        console.error('Error fetching IP:', error);
-        return 'Unknown IP';
+    // Draw 10 random shapes
+    for (let i = 0; i < 10; i++) {
+        ctx.beginPath();
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const size = Math.random() * 50 + 20;
+        const shapeType = Math.floor(Math.random() * 2); // 0: circle, 1: rect
+        ctx.fillStyle = `hsl(${hue + Math.random() * 60}, 70%, 50%)`;
+
+        if (shapeType === 0) {
+            ctx.arc(x, y, size / 2, 0, 2 * Math.PI);
+        } else {
+            ctx.rect(x - size / 2, y - size / 2, size, size);
+        }
+        ctx.fill();
     }
 }
 
-// Export messages to a text file
-function exportMessagesToTextFile(messages) {
-    const textContent = messages.map(({ name, message, ip, timestamp }) => 
-        `${name}: ${message}\nIP: ${ip}\nPosted: ${new Date(timestamp).toLocaleString()}\n`
-    ).join('\n');
-    const blob = new Blob([textContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'caydence_birthday_messages.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-}
+function drawSun() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const { sunAngle, hours } = getTimeBasedValues();
 
-// Handle message form submission
-const messageForm = document.getElementById('message-form');
-const messageBoard = document.getElementById('message-board');
-
-messageForm.addEventListener('submit', async function(event) {
-    event.preventDefault();
-    
-    const name = document.getElementById('name-input').value.trim();
-    const message = document.getElementById('message-input').value.trim();
-    
-    if (name && message) {
-        // Fetch IP address
-        const ip = await getIPAddress();
-        const timestamp = new Date().toISOString();
-        
-        // Display message on the board
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message');
-        messageElement.innerHTML = `<strong>${name}</strong>: ${message}`;
-        messageBoard.appendChild(messageElement);
-        
-        // Save message with IP and timestamp to localStorage
-        saveMessage(name, message, ip, timestamp);
-        
-        // Export all messages to a text file
-        const messages = JSON.parse(localStorage.getItem('birthdayMessages')) || [];
-        exportMessagesToTextFile(messages);
-        
-        // Clear form
-        messageForm.reset();
+    // Sky background (blue to orange gradient based on time)
+    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    if (hours < 12) {
+        gradient.addColorStop(0, '#87ceeb'); // Morning sky
+        gradient.addColorStop(1, '#f0e68c');
+    } else {
+        gradient.addColorStop(0, '#ff4500'); // Evening sky
+        gradient.addColorStop(1, '#483d8b');
     }
-});
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-// Save message to localStorage
-function saveMessage(name, message, ip, timestamp) {
-    let messages = JSON.parse(localStorage.getItem('birthdayMessages')) || [];
-    messages.push({ name, message, ip, timestamp });
-    localStorage.setItem('birthdayMessages', JSON.stringify(messages));
+    // Ground
+    ctx.fillStyle = '#228b22';
+    ctx.fillRect(0, canvas.height * 0.7, canvas.width, canvas.height * 0.3);
+
+    // Sun
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height * 0.7;
+    const radius = canvas.width * 0.4;
+    const angleRad = (sunAngle * Math.PI) / 180;
+    const sunX = centerX + radius * Math.cos(angleRad);
+    const sunY = centerY - radius * Math.sin(angleRad);
+
+    ctx.beginPath();
+    ctx.arc(sunX, sunY, 30, 0, 2 * Math.PI);
+    ctx.fillStyle = '#ffd700';
+    ctx.fill();
 }
-
-// Load messages from localStorage
-function loadMessages() {
-    let messages = JSON.parse(localStorage.getItem('birthdayMessages')) || [];
-    messages.forEach(({ name, message }) => {
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message');
-        messageElement.innerHTML = `<strong>${name}</strong>: ${message}`;
-        messageBoard.appendChild(messageElement);
-    });
-}
-
-// Load messages when page loads
-window.onload = loadMessages;
