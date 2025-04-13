@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caydence's 11th Birthday</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha384-NmQ6bX2d3Tt2hZP4B8WZx9H4q7iZlaFqvTVA/4QZ3E5Q2i4p8GrH5Sz7xJ0fwJ6B" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="accessDenied" style="display: none;">
+    <div id="accessDenied" class="hidden">
         <h1>Access Denied</h1>
         <p>Sorry, this site is not available in your area.</p>
     </div>
@@ -16,50 +15,50 @@
     <div id="passwordPrompt" class="password-prompt">
         <p>Enter the party password to join Caydence's birthday fun!</p>
         <label for="passwordInput">Password:</label>
-        <input type="password" id="passwordInput" name="password">
+        <input type="password" id="passwordInput">
         <button id="passwordButton">Enter</button>
-        <p id="passwordError" style="color: red; display: none;">Incorrect password. Please try again.</p>
+        <p id="passwordError" class="error hidden">Incorrect password. Please try again.</p>
     </div>
 
-    <div id="mainContent" style="display: none;">
-        <h1>Happy Birthday, Caydence!</h1>
-        <h2>Songs that were popular when Caydence was born</h2>
+    <div id="mainContent" class="hidden">
+        <h1>Happy Birthday, Caydence! 🎉</h1>
+
+        <h2>Popular Songs When You Were Born</h2>
         <ul>
             <li>Happy - Pharrell Williams</li>
             <li>All of Me - John Legend</li>
             <li>Dark Horse - Katy Perry</li>
         </ul>
 
-        <h2>Cool Things from Around Your Birthday (April 14, 2014)</h2>
+        <h2>Awesome Events from April 14, 2014</h2>
         <ul>
-            <li><strong>Music:</strong> "Happy" by Pharrell Williams was the #1 song, making everyone dance like at your party!</li>
-            <li><strong>Literature:</strong> The Pulitzer Prizes were announced on April 14, 2014. A book called <em>The Goldfinch</em> won, about a boy and a magical painting!</li>
-            <li><strong>Art:</strong> Around your birthday, the artist Banksy made new street art in London, turning walls into colorful stories!</li>
+            <li><strong>Music:</strong> "Happy" by Pharrell Williams was the #1 song!</li>
+            <li><strong>Books:</strong> <em>The Goldfinch</em> won the Pulitzer Prize.</li>
+            <li><strong>Art:</strong> Banksy created new street art around this time!</li>
         </ul>
 
         <h2>Create Your Own Art!</h2>
-        <p>Make cool pictures based on the time of day!</p>
         <button id="abstractArtButton">Create Abstract Art</button>
         <button id="sunArtButton">Create Sun Picture</button>
         <canvas id="artCanvas" width="500" height="400"></canvas>
 
         <h2>Leave a Birthday Message!</h2>
-        <p>Write a fun message for Caydence!</p>
-        <input type="text" id="messageInput" name="message" placeholder="Your message...">
-        <button id="messageButton">Send Message</button>
+        <input type="text" id="messageInput" placeholder="Your message...">
+        <button id="messageButton">Send</button>
         <div id="messageBoard"></div>
 
-        <h2>Guess the Birthday Number Game!</h2>
-        <p>Can you guess the secret number (1–100)? You get 10 tries!</p>
-        <input type="number" id="guessInput" name="guess" placeholder="Enter a number" min="1" max="100">
+        <h2>Guess the Birthday Number!</h2>
+        <p>Try to guess the secret number (1–100) in 10 tries!</p>
+        <input type="number" id="guessInput" min="1" max="100">
         <button id="guessButton">Guess!</button>
-        <p id="gameFeedback">Start guessing, superstar!</p>
+        <p id="gameFeedback">Start guessing!</p>
         <p id="guessesLeft">Guesses left: 10</p>
 
         <h2>A Special Verse for Caydence</h2>
-        <p><em>Jeremiah 29:11</em>: “For I know the plans I have for you,” declares the Lord, “plans to prosper you and not to harm you, plans to give you hope and a future.”</p>
+        <p><em>Jeremiah 29:11</em>: “For I know the plans I have for you,” declares the Lord, “plans to give you hope and a future.”</p>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
