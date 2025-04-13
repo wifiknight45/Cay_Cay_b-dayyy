@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caydence's 11th Birthday</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,6 +23,13 @@
             <li>Dark Horse - Katy Perry</li>
         </ul>
 
+        <h2>Cool Things from Around Your Birthday (April 14, 2014)</h2>
+        <ul>
+            <li><strong>Music:</strong> "Happy" by Pharrell Williams was the #1 song, making everyone dance like at your party!</li>
+            <li><strong>Literature:</strong> The Pulitzer Prizes were announced on April 14, 2014. A book called <em>The Goldfinch</em> won, about a boy and a magical painting!</li>
+            <li><strong>Art:</strong> Around your birthday, the artist Banksy made new street art in London, turning walls into colorful stories!</li>
+        </ul>
+
         <h2>Create Your Own Art!</h2>
         <p>Make cool pictures based on the time of day!</p>
         <button onclick="drawAbstract()">Create Abstract Art</button>
@@ -33,6 +41,16 @@
         <input type="text" id="messageInput" placeholder="Your message...">
         <button onclick="postMessage()">Send Message</button>
         <div id="messageBoard"></div>
+
+        <h2>Guess the Birthday Number Game!</h2>
+        <p>Can you guess the secret number (1–100)? You get 10 tries!</p>
+        <input type="number" id="guessInput" placeholder="Enter a number" min="1" max="100">
+        <button onclick="makeGuess()">Guess!</button>
+        <p id="gameFeedback">Start guessing, superstar!</p>
+        <p id="guessesLeft">Guesses left: 10</p>
+
+        <h2>A Special Verse for Caydence</h2>
+        <p><em>Jeremiah 29:11</em>: “For I know the plans I have for you,” declares the Lord, “plans to prosper you and not to harm you, plans to give you hope and a future.”</p>
     </div>
 
     <script src="script.js"></script>
