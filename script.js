@@ -3,14 +3,14 @@ function scrollToMessages() {
     document.getElementById('messages').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Display a random Coraline fact
-function showCoralineFact() {
+// Display a random Chappell Roan fact
+function showChappellFact() {
     const facts = [
-        "The buttons in *Coraline* are a creepy nod to the Other Mother’s control!",
-        "Coraline’s blue hair shows her bold, adventurous spirit!",
-        "The movie’s stop-motion took over two years to create!",
-        "The secret door in *Coraline* leads to a world that’s both magical and dangerous!",
-        "Caydence’s love for *Coraline* matches her own fearless vibe!"
+        "Chappell Roan’s real name is Kayleigh, and she picked her stage name to honor her grandpa!",
+        "Her song ‘Good Luck, Babe!’ is a huge hit that kids like Caydence love dancing to!",
+        "Chappell loves sparkly outfits, just like the bead bracelets Caydence makes!",
+        "She grew up writing songs and even put them on YouTube when she was a teenager!",
+        "Chappell’s music is super fun, with bright colors and big feelings, perfect for a party!"
     ];
     const randomFact = facts[Math.floor(Math.random() * facts.length)];
     alert(randomFact);
