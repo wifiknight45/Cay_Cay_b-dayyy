@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 11th Birthday, Caydence!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Happy 11th Birthday, Caydence!</h1>
+        <p>Celebrating in Springfield, MO, with love from California!</p>
+    </header>
+    <main>
+        <section class="intro">
+            <h2>Welcome to Caydence's Coraline-Themed Party!</h2>
+            <p>Tomorrow, April 14, 2025, Caydence turns 11! Join us today for a spooky, magical adventure inspired by her favorite movie, <em>Coraline</em>.</p>
+            <div class="buttons">
+                <button onclick="scrollToMessages()">Leave a Birthday Wish!</button>
+                <button onclick="showCoralineFact()">Discover a Coraline Secret</button>
+            </div>
+        </section>
+        <section id="messages" class="messages">
+            <h2>Birthday Message Board</h2>
+            <form id="message-form">
+                <input type="text" id="name-input" placeholder="Your Name" required>
+                <textarea id="message-input" placeholder="Write your birthday wish..." required></textarea>
+                <button type="submit">Post Message</button>
+            </form>
+            <div id="message-board"></div>
+        </section>
+    </main>
+    <footer>
+        <p>Made with love for Caydence's 11th birthday &copy; 2025</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
