@@ -1,101 +1,47 @@
+// Password Protection
+const correctPassword = 'CayCay11'; // Change this to a strong, unique password
+
+function checkPassword() {
+    const input = document.getElementById('passwordInput').value;
+    if (input === correctPassword) {
+        document.getElementById('passwordPrompt').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        logVisitor(); // Log IP after access granted
+    } else {
+        alert('Wrong password! Please try again.');
+    }
+}
+
+// IP Logging
+async function logVisitor() {
+    let visitorData = {
+        timestamp: new Date().toISOString(),
+        ipData: {}
+    };
+
+    try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        visitorData.ipData = {
+            ip: btoa(data.ip), // Encode IP to avoid plain text
+            country: data.country_name || 'unknown',
+            city: data.city || 'unknown',
+            isp: data.org || 'unknown'
+        };
+    } catch (e) {
+        console.log('IP API failed:', e);
+        visitorData.ipData = { error: 'Could not retrieve IP data' };
+    }
+
+    let logs = JSON.parse(localStorage.getItem('visitorLogs') || '[]');
+    logs.push(visitorData);
+    localStorage.setItem('visitorLogs', JSON.stringify(logs));
+}
+
 // Art Canvas
 const canvas = document.getElementById('artCanvas');
 const ctx = canvas.getContext('2d');
 
-// Consent Management
-function acceptConsent() {
-    localStorage.setItem('consent', 'accepted');
-    document.getElementById('consentBanner').style.display = 'none';
-    logVisitor();
-}
-
-function declineConsent() {
-    localStorage.setItem('consent', 'declined');
-    document.getElementById('consentBanner').style.display = 'none';
-}
-
-function checkConsent() {
-    const consent = localStorage.getItem('consent');
-    if (!consent) {
-        document.getElementById('consentBanner').style.display = 'block';
-    } else if (consent === 'accepted') {
-        logVisitor();
-    }
-}
-
-// Generate UUID for unique visitors
-function generateUUID() {
-    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-    );
-}
-
-// Visitor Logging
-async function logVisitor() {
-    if (localStorage.getItem('consent') !== 'accepted') return;
-
-    // Generate or retrieve visitor ID
-    let visitorId = localStorage.getItem('visitorId');
-    if (!visitorId) {
-        visitorId = generateUUID();
-        localStorage.setItem('visitorId', visitorId);
-    }
-
-    // Collect metadata
-    const metadata = {
-        visitorId,
-        timestamp: new Date().toISOString(),
-        userAgent: navigator.userAgent,
-        language: navigator.language,
-        screen: `${window.screen.width}x${window.screen.height}`,
-        platform: navigator.platform,
-        connection: navigator.connection ? {
-            type: navigator.connection.effectiveType,
-            downlink: navigator.connection.downlink
-        } : 'unknown',
-        vpnSuspected: false,
-        ipData: {}
-    };
-
-    // VPN Detection (via ipapi.co)
-    try {
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-        metadata.ipData = {
-            ip: 'hashed', // Not storing raw IP
-            country: data.country_name,
-            city: data.city,
-            isp: data.org,
-            isDataCenter: data.org.includes('Hosting') || data.org.includes('Cloud')
-        };
-        metadata.vpnSuspected = metadata.ipData.isDataCenter || data.timezone !== Intl.DateTimeFormat().resolvedOptions().timeZone;
-    } catch (e) {
-        console.log('IP API failed:', e);
-    }
-
-    // WebRTC Check (limited, often disabled)
-    try {
-        if (window.RTCPeerConnection) {
-            metadata.webrtc = 'enabled';
-        } else {
-            metadata.webrtc = 'disabled';
-        }
-    } catch (e) {
-        metadata.webrtc = 'error';
-    }
-
-    // Store locally (for demo; use Firebase for persistence)
-    let logs = JSON.parse(localStorage.getItem('visitorLogs') || '[]');
-    logs.push(metadata);
-    localStorage.setItem('visitorLogs', JSON.stringify(logs));
-
-    // Optional: Send to Firebase (uncomment if configured)
-    /*
-    firebase.analytics().logEvent('visitor', metadata);
-    */
-}
-
-// Art Functions
 function getTimeBasedValues() {
     const now = new Date();
     const hours = now.getHours() + now.getMinutes() / 60;
@@ -156,5 +102,43 @@ function drawSun() {
     ctx.fill();
 }
 
+// Message Board
+function postMessage() {
+    const input = document.getElementById('messageInput');
+    const message = input.value.trim();
+    if (message) {
+        const board = document.getElementById('messageBoard');
+        const div = document.createElement('div');
+        div.className = 'message';
+        div.textContent = message;
+        board.appendChild(div);
+        input.value = '';
+
+        // Store message locally
+        let messages = JSON.parse(localStorage.getItem('messages') || '[]');
+        messages.push({ text: message, timestamp: new Date().toISOString() });
+        localStorage.setItem('messages', JSON.stringify(messages));
+    }
+}
+
+// Load saved messages
+function loadMessages() {
+    let messages = JSON.parse(localStorage.getItem('messages') || '[]');
+    const board = document.getElementById('messageBoard');
+    messages.forEach(msg => {
+        const div = document.createElement('div');
+        div.className = 'message';
+        div.textContent = msg.text;
+        board.appendChild(div);
+    });
+}
+
 // Initialize
-window.onload = checkConsent;
+window.onload = () => {
+    if (localStorage.getItem('authenticated') === correctPassword) {
+        document.getElementById('passwordPrompt').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        logVisitor();
+        loadMessages();
+    }
+};
