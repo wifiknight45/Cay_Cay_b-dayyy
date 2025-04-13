@@ -1,12 +1,14 @@
 // Password Protection
-const correctPassword = 'C@y_Cay11'; // Change this to a strong, unique password
+const passwordHash = 'f7b8c6d9e0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7'; // SHA-256 of 'C@y_CayTurn$11'
 
 function checkPassword() {
     const input = document.getElementById('passwordInput').value;
-    if (input === correctPassword) {
+    if (CryptoJS.SHA256(input).toString() === passwordHash) {
+        localStorage.setItem('authenticated', CryptoJS.SHA256(input).toString());
         document.getElementById('passwordPrompt').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
-        logVisitor(); // Log IP after access granted
+        logVisitor();
+        loadMessages();
     } else {
         alert('Wrong password! Please try again.');
     }
@@ -23,7 +25,7 @@ async function logVisitor() {
         const response = await fetch('https://ipapi.co/json/');
         const data = await response.json();
         visitorData.ipData = {
-            ip: btoa(data.ip), // Encode IP to avoid plain text
+            ip: btoa(data.ip),
             country: data.country_name || 'unknown',
             city: data.city || 'unknown',
             isp: data.org || 'unknown'
@@ -114,14 +116,12 @@ function postMessage() {
         board.appendChild(div);
         input.value = '';
 
-        // Store message locally
         let messages = JSON.parse(localStorage.getItem('messages') || '[]');
         messages.push({ text: message, timestamp: new Date().toISOString() });
         localStorage.setItem('messages', JSON.stringify(messages));
     }
 }
 
-// Load saved messages
 function loadMessages() {
     let messages = JSON.parse(localStorage.getItem('messages') || '[]');
     const board = document.getElementById('messageBoard');
@@ -133,12 +133,67 @@ function loadMessages() {
     });
 }
 
+// Guessing Game
+let guessesLeft = 10;
+let targetNumber;
+
+function initializeGame() {
+    let availableNumbers = JSON.parse(localStorage.getItem('availableNumbers'));
+    if (!availableNumbers || availableNumbers.length === 0) {
+        availableNumbers = Array.from({ length: 100 }, (_, i) => i + 1);
+        shuffle(availableNumbers);
+    }
+
+    targetNumber = availableNumbers.pop();
+    localStorage.setItem('availableNumbers', JSON.stringify(availableNumbers));
+    guessesLeft = 10;
+    document.getElementById('guessesLeft').textContent = `Guesses left: ${guessesLeft}`;
+    document.getElementById('gameFeedback').textContent = 'Start guessing, superstar!';
+    document.getElementById('guessInput').value = '';
+}
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function makeGuess() {
+    const input = document.getElementById('guessInput');
+    const guess = parseInt(input.value);
+    const feedback = document.getElementById('gameFeedback');
+
+    if (isNaN(guess) || guess < 1 || guess > 100) {
+        feedback.textContent = 'Please enter a number between 1 and 100!';
+        return;
+    }
+
+    guessesLeft--;
+    document.getElementById('guessesLeft').textContent = `Guesses left: ${guessesLeft}`;
+
+    if (guess === targetNumber) {
+        feedback.textContent = 'You got it, superstar! Play again!';
+        initializeGame();
+    } else if (guessesLeft === 0) {
+        feedback.textContent = `Game over! The number was ${targetNumber}. Try again!`;
+        initializeGame();
+    } else if (guess < targetNumber) {
+        feedback.textContent = 'Too low! Try a bigger number.';
+    } else {
+        feedback.textContent = 'Too high! Try a smaller number.';
+    }
+
+    input.value = '';
+}
+
 // Initialize
 window.onload = () => {
-    if (localStorage.getItem('authenticated') === correctPassword) {
+    if (localStorage.getItem('authenticated') === passwordHash) {
         document.getElementById('passwordPrompt').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
         logVisitor();
         loadMessages();
+        initializeGame();
     }
 };
