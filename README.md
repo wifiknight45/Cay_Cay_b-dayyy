@@ -38,10 +38,8 @@ A password ensures **only family & friends** can join in!
 
 ---
 
-## **💡 Cool Features to Look Out For**
-✨ **Enhanced security**—password validation & IP blocking are now **server-side** for extra protection.  
-🖥️ **Messages Save**—your posts will **stay on the site** & **reload properly** when revisiting!  
-🎨 **Smoother animations**—buttons bounce, messages slide, and interactive elements feel more natural!  
+## **💡 Cool Features to Look Out For** 
+🖥️ **Messages Save**—your posts will **stay on the site** & **reload properly** when revisiting!   
 🌟 **Mobile-Friendly Updates**—better layout for phones & tablets!  
 
 ---
@@ -55,7 +53,7 @@ Just tell a grown-up:
 ## **🎂 Who Created This Website?**
 This website was lovingly built for **Caydence’s special day** by **Robert** (aka "Roberto")!  
 He’s been friends with Caydence’s mom **since before she was even born** —yes, some people were actually born in the last century! 😂  
-We wanted **Caydence’s 11th birthday** to be **as wild and colorful as she is**! 🎨🌈  
+We wanted **Caydence’s 11th birthday** to be **as wild and colorful as she is! 🎨🌈  
 
 ---
 
