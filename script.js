@@ -6,7 +6,6 @@ async function checkIPAccess() {
 
         if (accessDenied) {
             document.getElementById('accessDenied').classList.remove('hidden');
-            document.getElementById('passwordPrompt').classList.add('hidden');
             document.getElementById('mainContent').classList.add('hidden');
             return false;
         }
@@ -14,33 +13,6 @@ async function checkIPAccess() {
         console.error('IP check failed:', e);
     }
     return true;
-}
-
-// Secure Password Authentication (Now validated server-side)
-async function checkPassword() {
-    const input = document.getElementById('passwordInput').value;
-
-    try {
-        const response = await fetch('/api/verify-password', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ password: input })
-        });
-
-        const { authenticated } = await response.json();
-        if (authenticated) {
-            sessionStorage.setItem('authenticated', 'true'); // Using sessionStorage
-            document.getElementById('passwordPrompt').classList.add('hidden');
-            document.getElementById('mainContent').classList.remove('hidden');
-            logVisitor();
-            loadMessages();
-            initializeGame();
-        } else {
-            document.getElementById('passwordError').classList.remove('hidden');
-        }
-    } catch (e) {
-        console.error('Password verification failed:', e);
-    }
 }
 
 // Secure IP Logging (Now hashes IP for privacy)
@@ -210,13 +182,10 @@ function makeGuess() {
 // Secure Initialization
 window.onload = async () => {
     const accessAllowed = await checkIPAccess();
-    if (accessAllowed && sessionStorage.getItem('authenticated') === 'true') {
-        document.getElementById('passwordPrompt').classList.add('hidden');
+    if (accessAllowed) {
         document.getElementById('mainContent').classList.remove('hidden');
         logVisitor();
         loadMessages();
         initializeGame();
     }
 };
-
-
