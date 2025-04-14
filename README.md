@@ -3,14 +3,13 @@
 📍 **URL:** 👉 [https://wifiknight45.github.io/Cay_Cay_b-dayyy/](https://wifiknight45.github.io/Cay_Cay_b-dayyy/) 👈  
 
 ## **Welcome, Friends & Family!**
-🎊 Get ready to celebrate **Caydence’s 11th birthday** tomorrow, **April 14, 2025!** Today, April 13, we’re kicking off the party online, so jump in and have fun! This website is packed with things **Caydence loves**—from Coraline and Chappell Roan’s sparkly music to making **wild, colorful bead bracelets!**
+🎊  Today is Caydence’s 11th birthday **April 14, 2025!**  check out the site, create some art based upon the position of the sun in the sky or play the mystery birthday number game!
 
 ---
 
 ## **✨ What’s This Website For?**
 Think of it as a **digital birthday card!** Here’s what you can do:
 ✅ **Leave a birthday message** that appears on screen!  
-✅ **Learn cool facts** about Chappell Roan, her favorite singer!  
 ✅ **Check out hit songs** from 2014, the year Caydence was born!  
 ✅ **Discover how to make a bead bracelet** (just like Caydence loves)!  
 ✅ **Play interactive games** to make the celebration even more fun! 🎮  
