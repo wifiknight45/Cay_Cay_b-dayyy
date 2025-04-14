@@ -6,6 +6,40 @@
     <title>Caydence's 11th Birthday</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fefefe;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a0dad, #ffdd00);
+            color: white;
+        }
+        .content-box {
+            border: 2px solid #6a0dad;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            background-color: #ffdd00;
+            color: #333;
+        }
+        .art-gallery img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
+            border: 2px solid #6a0dad;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #6a0dad;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -29,32 +63,12 @@
         </section>
 
         <section class="content-box">
-            <h2>Create Your Own Art!</h2>
-            <div class="button-group">
-                <button id="abstractArtButton">Create Abstract Art</button>
-                <button id="sunArtButton">Create Sun Picture</button>
-            </div>
-            <canvas id="artCanvas" width="500" height="400"></canvas>
-        </section>
-
-        <section class="content-box">
             <h2>Leave a Birthday Message!</h2>
             <div class="input-group">
                 <input type="text" id="messageInput" placeholder="Your message...">
                 <button id="messageButton">Send</button>
             </div>
             <div id="messageBoard"></div>
-        </section>
-
-        <section class="content-box">
-            <h2>Guess the Birthday Number!</h2>
-            <p>Try to guess the secret number (1–100) in 10 tries!</p>
-            <div class="input-group">
-                <input type="number" id="guessInput" min="1" max="100">
-                <button id="guessButton">Guess!</button>
-            </div>
-            <p id="gameFeedback">Start guessing!</p>
-            <p id="guessesLeft">Guesses left: 10</p>
         </section>
 
         <section class="content-box">
@@ -65,19 +79,19 @@
         <section class="content-box">
             <h2>🎤 Fun Facts About Chappell Roan</h2>
             <ul>
-                <li>Her real name is **Kayleigh Rose Amstutz**.</li>
-                <li>She got her stage name from her **grandpa’s favorite song**.</li>
-                <li>She **loves gaming**, especially **The Sims**!</li>
-                <li>She once had a **chicken named Lady Gaga**! 🐔</li>
+                <li>Her real name is <strong>Kayleigh Rose Amstutz</strong>.</li>
+                <li>She got her stage name from her <strong>grandpa’s favorite song</strong>.</li>
+                <li>She <strong>loves gaming</strong>, especially <strong>The Sims</strong>!</li>
+                <li>She once had a <strong>chicken named Lady Gaga</strong>! 🐔</li>
             </ul>
         </section>
 
         <section class="content-box">
             <h2>📜 Historical Events on April 14</h2>
             <ul>
-                <li>**1865:** President **Abraham Lincoln** was shot at Ford’s Theatre.</li>
-                <li>**966:** Poland’s ruler **Mieszko I** converted to Christianity.</li>
-                <li>**43 BC:** The **Battle of Forum Gallorum** took place in Ancient Rome.</li>
+                <li><strong>1865:</strong> President <strong>Abraham Lincoln</strong> was shot at Ford’s Theatre.</li>
+                <li><strong>966:</strong> Poland’s ruler <strong>Mieszko I</strong> converted to Christianity.</li>
+                <li><strong>43 BC:</strong> The <strong>Battle of Forum Gallorum</strong> took place in Ancient Rome.</li>
             </ul>
         </section>
 
