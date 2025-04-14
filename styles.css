@@ -72,6 +72,22 @@ canvas {
     background-color: #732d91;
 }
 
+/* Special Birthday Message Button */
+#sendEmailButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#sendEmailButton:hover {
+    background-color: #2980b9;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
     #messageBoard {
