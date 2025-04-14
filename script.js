@@ -3,6 +3,11 @@ let guessesLeft = 10;
 let targetNumber;
 
 function initializeGame() {
+    resetGameState();
+    updateUI();
+}
+
+function resetGameState() {
     let availableNumbers = JSON.parse(localStorage.getItem('availableNumbers')) || [];
 
     if (!availableNumbers.length) {
@@ -12,8 +17,10 @@ function initializeGame() {
 
     targetNumber = availableNumbers.pop();
     localStorage.setItem('availableNumbers', JSON.stringify(availableNumbers));
-
     guessesLeft = 10;
+}
+
+function updateUI() {
     document.getElementById('guessesLeft').textContent = `Guesses left: ${guessesLeft}`;
     document.getElementById('gameFeedback').textContent = 'Start guessing!';
     document.getElementById('guessInput').value = '';
@@ -28,8 +35,13 @@ function shuffle(array) {
 
 function makeGuess() {
     const input = document.getElementById('guessInput');
-    const guess = parseInt(input.value);
+    const guess = parseInt(input.value.trim());
     const feedback = document.getElementById('gameFeedback');
+
+    if (!input.value.trim()) {
+        feedback.textContent = 'Input cannot be empty!';
+        return;
+    }
 
     if (isNaN(guess) || guess < 1 || guess > 100) {
         feedback.textContent = 'Please enter a number between 1 and 100!';
@@ -79,12 +91,17 @@ function sendRandomBirthdayMessage() {
         }),
     })
         .then(() => alert('A special birthday message was sent to Caydence!'))
-        .catch((err) => console.error('Failed to send email:', err));
+        .catch((err) => {
+            console.error('Failed to send email:', err);
+            alert('Failed to send the email. Please try again later.');
+        });
 }
 
 // Button to trigger email sending
 const sendEmailButton = document.createElement('button');
 sendEmailButton.textContent = "Send a Special Birthday Message!";
+sendEmailButton.setAttribute('aria-label', 'Send a Special Birthday Message');
+sendEmailButton.setAttribute('role', 'button');
 sendEmailButton.onclick = sendRandomBirthdayMessage;
 document.body.appendChild(sendEmailButton);
 
