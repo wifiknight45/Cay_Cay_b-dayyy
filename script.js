@@ -1,4 +1,21 @@
-// Improved Guessing Game Logic (Handles number exhaustion correctly)
+// Secure IP Blocking (Handled server-side)
+async function checkIPAccess() {
+    try {
+        const response = await fetch('/api/check-ip');
+        const { accessDenied } = await response.json();
+
+        if (accessDenied) {
+            document.getElementById('accessDenied').classList.remove('hidden');
+            document.getElementById('mainContent').classList.add('hidden');
+            return false;
+        }
+    } catch (error) {
+        console.error('IP check failed:', error);
+    }
+    return true;
+}
+
+// Improved Guessing Game Logic
 let guessesLeft = 10;
 let targetNumber;
 
@@ -64,7 +81,68 @@ function makeGuess() {
     input.value = '';
 }
 
-// New feature: Send random birthday message
+// Improved Art Creation Feature
+const canvas = document.getElementById('artCanvas');
+const ctx = canvas.getContext('2d');
+
+function getTimeBasedValues() {
+    const now = new Date();
+    return {
+        hue: (now.getHours() / 24) * 360,
+        sunAngle: ((now.getHours() - 6) % 12) / 12 * 180
+    };
+}
+
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function drawAbstract() {
+    clearCanvas();
+    const { hue } = getTimeBasedValues();
+
+    for (let i = 0; i < 10; i++) {
+        ctx.beginPath();
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const size = Math.random() * 50 + 20;
+        const shapeType = Math.floor(Math.random() * 2);
+        ctx.fillStyle = `hsl(${hue + Math.random() * 60}, 70%, 50%)`;
+
+        if (shapeType === 0) {
+            ctx.arc(x, y, size / 2, 0, 2 * Math.PI);
+        } else {
+            ctx.rect(x - size / 2, y - size / 2, size, size);
+        }
+        ctx.fill();
+    }
+}
+
+function drawSun() {
+    clearCanvas();
+    const { sunAngle, hours } = getTimeBasedValues();
+
+    ctx.fillStyle = hours < 12 ? '#87ceeb' : '#ff4500';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height * 0.7;
+    const radius = canvas.width * 0.4;
+    const angleRad = (sunAngle * Math.PI) / 180;
+    const sunX = centerX + radius * Math.cos(angleRad);
+    const sunY = centerY - radius * Math.sin(angleRad);
+
+    ctx.beginPath();
+    ctx.arc(sunX, sunY, 30, 0, 2 * Math.PI);
+    ctx.fillStyle = '#ffd700';
+    ctx.fill();
+}
+
+// Attach buttons to art functions
+document.getElementById('abstractArtButton').addEventListener('click', drawAbstract);
+document.getElementById('sunArtButton').addEventListener('click', drawSun);
+
+// Improved Birthday Message Feature
 function sendRandomBirthdayMessage() {
     const messages = [
         "Happy Birthday! Enjoy every moment of your special day!",
@@ -76,7 +154,6 @@ function sendRandomBirthdayMessage() {
         "‘For I know the plans I have for you,’ declares the Lord, ‘plans to prosper you and not to harm you, plans to give you hope and a future.’ - Jeremiah 29:11",
         "Never forget: You're braver than you believe, stronger than you seem, and smarter than you think!",
         "Make a wish and let it take flight!",
-        // Add up to 50 messages
     ];
 
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
@@ -96,14 +173,6 @@ function sendRandomBirthdayMessage() {
             alert('Failed to send the email. Please try again later.');
         });
 }
-
-// Button to trigger email sending
-const sendEmailButton = document.createElement('button');
-sendEmailButton.textContent = "Send a Special Birthday Message!";
-sendEmailButton.setAttribute('aria-label', 'Send a Special Birthday Message');
-sendEmailButton.setAttribute('role', 'button');
-sendEmailButton.onclick = sendRandomBirthdayMessage;
-document.body.appendChild(sendEmailButton);
 
 // Secure Initialization
 window.onload = async () => {
