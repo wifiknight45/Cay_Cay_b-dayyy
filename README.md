@@ -31,16 +31,7 @@ A password ensures **only family & friends** can join in!
 📌 **Your message will be saved** so Caydence can read it later! 💌  
 
 ### **Step 4: Explore More Fun**
-🎶 **Songs:** See **popular hits from 2014** like *“Happy”* by Pharrell Williams!  
-🎨 **Art:** Create **custom birthday-themed digital art** (optimized for smoother drawing)!  
-🧵 **Bracelets:** Learn to make **wild, colorful bead bracelets** like Caydence’s favorite!  
-🧩 **Games:** Try the **Guessing Game**—can you find the secret number before time runs out?  
-
----
-
-## **💡 Cool Features to Look Out For** 
-🖥️ **Messages Save**—your posts will **stay on the site** & **reload properly** when revisiting!   
-🌟 **Mobile-Friendly Updates**—better layout for phones & tablets!  
+🎶 **Songs:** See **popular hits from 2014** like *“Happy”* by Pharrell Williams! 
 
 ---
 
@@ -68,8 +59,4 @@ If buttons don’t bounce or messages don’t slide, **just refresh the page** o
 
 ---
 
-### **✅ Updates Applied**
-✅ **Server-side security** for passwords & IP blocking  
-✅ **Improved mobile responsiveness** for easier browsing  
-✅ **Bug fixes for message board storage**  
-✅ **Optimized animations & interactivity**  
+
